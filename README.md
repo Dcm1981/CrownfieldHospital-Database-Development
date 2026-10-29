@@ -3,7 +3,8 @@
 **Module:** CPU4:103 — Introduction to Database  
 **Programme:** BSc (Hons) Computing  
 **Lecturer:** Mrs. Puna-Rimam Maiyaki  
-**Student:** Daniel Camargo Moreira  
+**Individual Student (Parts C and D):** Daniel Camargo Moreira (G1418730)  
+**Group Group work (Parts A and B):** Serat Choudhury (G1411615), Natalin Tek Ozler (G1438117)
 **Database Management System:** MySQL 8.0  
 **Development Environment:** MySQL Workbench  
 **Project Scenario:** Crownfield Eye Hospital NHS Foundation Trust (fictional)  
