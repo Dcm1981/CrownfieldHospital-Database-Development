@@ -8,41 +8,42 @@ The objective is to transform the original unnormalised ophthalmology dataset pr
 
 ## Database Analysis
 
-The analysis considers:
+The analysis of Appendix 1 identified:
 
-- Data redundancy and potential insertion, update and deletion anomalies.
-- Business rules and relationships between hospital entities.
-- Primary keys and foreign keys.
-- Relationship cardinality and optionality.
+- Repeating groups, e.g. "Latanoprost | Timolol" in one cell and "6 weeks | High" mixing interval and priority.
+- Redundancy, e.g. patient Amina Yusuf and clinician Dr Maya Shah repeated across rows.
+- Insertion, update and deletion anomalies, e.g. deleting Michael Okoro's appointment would lose the fact that Dr Priya Nair is a Cornea specialist.
 
 ## Entity Relationship Diagram (ERD)
 
-The database consists of 11 relational tables:
+The database consists of 11 relational tables: Patients, Specialties, Clinicians, Clinics, Appointments, Diagnoses, AppointmentDiagnoses, Medicines, Prescriptions, PrescriptionItems and FollowUpPlans.
 
-- Patients
-- Specialties
-- Clinicians
-- Clinics
-- Appointments
-- Diagnoses
-- AppointmentDiagnoses
-- Medicines
-- Prescriptions
-- PrescriptionItems
-- FollowUpPlans
+The ERD uses Crow's Foot notation. Key cardinality and optionality rules:
 
-The ERD uses Crow's Foot notation to represent relationships and distinguish identifying from non-identifying relationships.
+| Relationship | Rule |
+|---|---|
+| Patient / Clinician / Clinic → Appointment | One to zero or many |
+| Appointment → Prescription | One to zero or many |
+| Appointment → AppointmentDiagnoses | One to zero or many (resolves the many-to-many with Diagnoses) |
+| Appointment → FollowUpPlan | One to zero or one (enforced by a UNIQUE key) |
+| Prescription → PrescriptionItems | One to one or many |
+
+Only three relationships are identifying (solid lines), because the foreign key is part of the primary key: Appointments → AppointmentDiagnoses, Diagnoses → AppointmentDiagnoses and Prescriptions → PrescriptionItems. All others are non-identifying (dashed lines).
 
 ## Database Normalisation
 
-The database design applies normalisation principles from Unnormalised Form (UNF) through First Normal Form (1NF), Second Normal Form (2NF) and Third Normal Form (3NF).
+| Form | Step | Example |
+|---|---|---|
+| 1NF | Atomic values | One medicine per row; follow-up split into due date and priority |
+| 2NF | Remove partial dependencies | DiagnosisName depends only on DiagnosisID within the key (AppointmentID, DiagnosisID) → Diagnoses table |
+| 3NF | Remove transitive dependencies | ClinicianID → SpecialtyID → SpecialtyName → Specialties table |
 
 The final structure reduces data redundancy and separates patient, appointment, diagnosis, prescription and medicine information into related tables.
 
 ## Files
 
 - `ERD.png` — Visual representation of the relational database design.
-- `ERD.mwb` — Editable MySQL Workbench database model.
+- `ERD.mwb` — Editable MySQL Workbench model (open with File → Open Model in MySQL Workbench).
 
 ## Academic Context
 
