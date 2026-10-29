@@ -4,7 +4,7 @@
 **Programme:** BSc (Hons) Computing  
 **Lecturer:** Mrs. Puna-Rimam Maiyaki  
 **Individual Student (Parts C and D):** Daniel Camargo Moreira (G1418730)  
-**Group Work (Parts A and B):** Serat Choudhury (G1411615), Natalin Tek Ozler (G1438117)
+**Group Work (Parts A and B):** Serat Choudhury (G1411615), Natalin Tek Ozler (G1438117)  
 **Database Management System:** MySQL 8.0  
 **Development Environment:** MySQL Workbench  
 **Project Scenario:** Crownfield Eye Hospital NHS Foundation Trust (fictional)  
@@ -89,6 +89,8 @@ Six individual SQL functionalities were developed to demonstrate data retrieval,
 
 The stored procedure accepts a PatientID parameter and retrieves the patient's appointment history, including clinician, clinic, date and time.
 
+The PatientID is passed as a parameter, so MySQL treats it as a value rather than executable SQL, reducing the risk of SQL injection.
+
 ### Trigger
 
 `PreventDoubleBooking_Daniel`
@@ -112,7 +114,7 @@ Four database roles were created:
 | `crownfield_receptionist` | Manage patient registration and appointments; no access to clinical data |
 | `crownfield_patient` | Read clinic and specialty information only |
 
-Permissions were implemented using `CREATE ROLE`, `GRANT`, `CREATE USER`, `SET DEFAULT ROLE` and `SHOW GRANTS`.
+Permissions were implemented using `CREATE ROLE`, `GRANT`, `CREATE USER`, `SET DEFAULT ROLE` and `SHOW GRANTS`. `09_Show_All_Grants.sql` displays the privileges of the four roles together.
 
 Authorised and unauthorised access tests, run as the `crownfield_patient_demo` user, demonstrate differentiated privileges and the principle of least privilege.
 
@@ -169,7 +171,8 @@ CrownfieldHospital-Database-Development/
     │   ├── 05_Patient_Role.sql
     │   ├── 06_Assign_Patient_Demo_Role.sql
     │   ├── 07_Verify_Authorised_Access.sql
-    │   └── 08_Test_Unauthorised_Access.sql
+    │   ├── 08_Test_Unauthorised_Access.sql
+    │   └── 09_Show_All_Grants.sql
     └── D2_Data_Protection/
         └── D2_AES_Encryption_Demo.sql
 ```
@@ -196,7 +199,8 @@ CrownfieldHospital-Database-Development/
 | 6 | `Part_C_Individual/Query_06_Trigger.sql`, then `Trigger_Tests/Test_01`, `Test_02`, `Test_03` | root |
 | 7 | `Part_D_Individual/D1_Access_Control/01` to `06` | root |
 | 8 | `Part_D_Individual/D1_Access_Control/07` and `08` | `crownfield_patient_demo` |
-| 9 | `Part_D_Individual/D2_Data_Protection/D2_AES_Encryption_Demo.sql` | root |
+| 9 | `Part_D_Individual/D1_Access_Control/09_Show_All_Grants.sql` | root |
+| 10 | `Part_D_Individual/D2_Data_Protection/D2_AES_Encryption_Demo.sql` | root |
 
 **Notes:**
 
@@ -215,6 +219,7 @@ CrownfieldHospital-Database-Development/
 | Invalid priority or appointment at 22:00 | Error 3819 (CHECK constraint) |
 | Trigger positive test (A997) | Inserted, then removed by ROLLBACK |
 | Trigger negative test (A996) | Error 1644 (double booking) |
+| `09_Show_All_Grants.sql` | Privileges of the four roles, matching the access matrix |
 | Patient user reads `Patients` | Error 1142 (access denied) |
 | AES decryption with the wrong key | NULL |
 
