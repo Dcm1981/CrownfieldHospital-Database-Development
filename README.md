@@ -20,14 +20,14 @@ The assessment combines collaborative database development (Parts A and B) with 
 
 ## 2. Part A — Database Analysis and Design
 
-The database was developed using relational database design principles and normalization techniques.
+The database was developed using relational database design principles and normalisation techniques.
 
 The design process includes:
 
 - Analysis of the original Appendix 1 dataset and identification of data anomalies.
 - Entity Relationship Diagram (ERD) using Crow's Foot notation.
 - Identification of primary keys, foreign keys, cardinality and optionality.
-- Normalization from Unnormalized Form (UNF) through First Normal Form (1NF) and Second Normal Form (2NF) to Third Normal Form (3NF).
+- Normalisation from Unnormalised Form (UNF) through First Normal Form (1NF) and Second Normal Form (2NF) to Third Normal Form (3NF).
 
 ### Database Tables
 
@@ -244,12 +244,12 @@ The demonstration passwords and the AES key in these scripts are fictional and u
 
 ## 10. Collaborative and Individual Contributions
 
-**Parts A and B — Collaborative:** Database analysis, normalization, ERD design, schema implementation and synthetic data preparation were undertaken as part of the group project.
+**Parts A and B — Collaborative:** Database analysis, normalisation, ERD design, schema implementation and synthetic data preparation were undertaken as part of the group project.
 
 **Parts C and D — Individual:** The SQL queries, stored procedure, trigger, role-based security demonstrations, encryption tests and related evidence document the student's own implementation and evaluation work. Individual database objects carry the `_Daniel` suffix.
 
 ## 11. Conclusion
 
-The Crownfield Eye Hospital database demonstrates the development of a normalized relational database using MySQL, supported by SQL queries, procedural functionality, integrity constraints and database security techniques.
+The Crownfield Eye Hospital database demonstrates the development of a normalised relational database using MySQL, supported by SQL queries, procedural functionality, integrity constraints and database security techniques.
 
 The project provides practical experience in database design, implementation, testing and documentation as part of the CPU4:103 assessment.
